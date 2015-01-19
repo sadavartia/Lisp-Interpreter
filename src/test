@@ -1,0 +1,74 @@
+(defun f (x y) (cond (x (car y)) (t 1)))
+(f t (quote (2 3)))
+
+(defun removeElement (n L) 
+    (cond 
+        ((null L) 
+            (quote NIL)
+        ) 
+        ((eq n (car L)) 
+            (removeElement n (cdr L))
+        ) 
+        (t 
+            (cons (car L) (removeElement n (cdr L)))
+        )
+    )
+)
+
+(defun removeList (M L) 
+    (cond 
+        ((null M) 
+            L
+        ) 
+        (t 
+            (removeList (cdr M) (removeElement (car M) L))
+        )
+    )
+)
+
+(defun insertElement (n L) 
+    (cond 
+        ((null L) 
+            (cons n (quote NIL))
+        ) 
+        ((less n (car L)) 
+            (cons n L)
+        ) 
+        ((eq n (car L)) 
+            (cons n L)
+        ) 
+        (t 
+            (cons (car L) (insertElement n (cdr L)))
+        )
+    )
+)
+
+(defun insertList (M L) 
+    (cond 
+        ((null M) 
+            L
+        ) 
+        (t 
+            (insertList (cdr M) (insertElement (car M) L))
+        )
+    )
+)
+
+(defun eliminateNsort (L1 L2) 
+    (insertList (removeList L2 L1) (quote NIL))
+)
+
+
+(eliminateNsort (cons (plus 3 2) (quote (4 7))) (quote (7)))
+
+(cons (quote (1 2))(quote(3 4)))
+
+(plus (plus 1 4)(minus 5 (plus 1 2 )))
+
+(cons(quote(1 2 3))(quote (a b c d )))
+
+(null (quote()))
+
+(defun f(x) (atom x)) 
+
+(defun f1 (x (y))(plus x y))
